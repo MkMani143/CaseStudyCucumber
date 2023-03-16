@@ -70,7 +70,7 @@ public class BlazeStepDefs {
 	@When("Add Items {string} and {string} to the cart")
 	public void add_items_and_to_the_cart(String category, String product) {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
-//		driver.findElement(By.xpath("//a[contains(text(),'Home')]")).click();
+		driver.findElement(By.xpath("//a[contains(text(),'Home')]")).click();
 	    String strpath="//a[text()='"+category+"']";
 	    wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(strpath)))).click();
 //	    driver.findElement(By.xpath(strpath)).click();
@@ -101,14 +101,14 @@ public class BlazeStepDefs {
 			
 		}
 		Assert.assertTrue(flag);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Home')]"))).click();
+//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Home')]"))).click();
 	}
 	
 	@When("Delete an Item to cart")
 	public void delete_an_item_to_cart() throws InterruptedException {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("cartur"))).click();
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Cart']"))).click();
+//		wait.until(ExpectedConditions.elementToBeClickable(By.id("cartur"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Cart']"))).click();
 		List<WebElement> ItemsBefore=driver.findElements(By.xpath("//td[2]"));
 		wait.until(ExpectedConditions.visibilityOfAllElements(ItemsBefore));
 		String Amount=driver.findElement(By.id("totalp")).getText();
